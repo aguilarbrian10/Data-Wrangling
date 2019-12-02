@@ -16,4 +16,7 @@ me=pd.merge(math,electronics,how='left', on='Student')
 meg=pd.merge(me,GEAS,how='left', on='Student')
 mege=pd.merge(meg,ESAT,how='left', on='Student')
 
-print(mege)
+melt = pd.melt(mege, id_vars = 'Student', value_vars = ['Math','Electronics','GEAS','ESAT'])
+meltrename = melt.rename(columns = {'variable' : 'Subject', 'value' : 'Grades'})
+
+print(meltrename)
